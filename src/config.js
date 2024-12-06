@@ -1,5 +1,5 @@
 const config = {
-  API_ROOT: 'http://38.242.148.205:8089',
+  API_ROOT: 'https://platinum-numbers.mediasolutions.uz',
   DEFAULT_APP_LANG: "UZ",
   STATUSES: {
     ACTIVE: "ACTIVE",
