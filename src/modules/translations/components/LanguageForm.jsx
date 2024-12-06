@@ -19,20 +19,15 @@ const LanguageForm = ({data,handleCancel,refetch}) => {
         form.setFieldsValue({
             key: get(data, "key"),
             uz: get(
-                findLang(get(data, "languageSourcePs", []), "uz"),
+                findLang(get(data, "languageSourcePs", []), "UZ"),
                 "translation",
                 ""
             ),
             ru: get(
-                findLang(get(data, "languageSourcePs", []), "ru"),
+                findLang(get(data, "languageSourcePs", []), "RU"),
                 "translation",
                 ""
             ),
-            kr: get(
-                findLang(get(data, "languageSourcePs", []), "kr"),
-                "translation",
-                ""
-            )
         });
     }, [data]);
 
@@ -43,7 +38,6 @@ const LanguageForm = ({data,handleCancel,refetch}) => {
                     key: get(data,'key'),
                     textUz: get(values,'uz'),
                     textRu: get(values,'ru'),
-                    textKr: get(values,'kr'),
                 }},
             {
                 onSuccess: () => {
@@ -86,13 +80,6 @@ const LanguageForm = ({data,handleCancel,refetch}) => {
                 <Form.Item
                     label={t("Rus")}
                     name="ru"
-                >
-                    <TextArea allowClear/>
-                </Form.Item>
-
-                <Form.Item
-                    label={t("Krill")}
-                    name="kr"
                 >
                     <TextArea allowClear/>
                 </Form.Item>

@@ -7,8 +7,6 @@ import AuthLayout from "../layouts/auth/AuthLayout.jsx";
 // LAYOUTS
 
 // AUTH
-import IsAuth from "../services/auth/IsAuth";
-import IsGuest from "../services/auth/IsGuest";
 import LoginPage from "../modules/auth/pages/LoginPage";
 // AUTH
 
@@ -18,14 +16,11 @@ import NotFoundPage from  "../modules/auth/pages/NotFoundPage";
 
 // PAGES
 import OverlayLoader from "../components/OverlayLoader.jsx";
-import ProductsPage from "../modules/products/pages/ProductsPage.jsx";
 import UsersPage from "../modules/users/pages/UsersPage.jsx";
-import AdminsPage from "../modules/admins/pages/AdminsPage.jsx";
-import OrdersPage from "../modules/orders/pages/OrdersPage.jsx";
-import PharmaciesPage from "../modules/pharmacies/pages/PharmaciesPage.jsx";
 import TranslationPage from "../modules/translations/pages/TranslationPage.jsx";
-import ConstantsPage from "../modules/constants/pages/ConstantsPage.jsx";
-import TransactionPage from "../modules/transactions/pages/TransactionPage.jsx";
+import IsAuth from "../services/auth/IsAuth.jsx";
+import IsGuest from "../services/auth/IsGuest.jsx";
+import NumbersPage from "../modules/numbers/pages/NumbersPage.jsx";
 // PAGES
 
 
@@ -37,44 +32,24 @@ const Router = () => {
           <Routes>
             <Route path={"/"} element={<DashboardLayout />}>
               <Route
-                  path={"/products"}
-                  element={<ProductsPage />}
+                  path={"/numbers"}
+                  element={<NumbersPage />}
               />
               <Route
                   path={"/users"}
                   element={<UsersPage />}
               />
               <Route
-                  path={"/admins"}
-                  element={<AdminsPage />}
-              />
-              <Route
-                  path={"/orders"}
-                  element={<OrdersPage />}
-              />
-              <Route
-                  path={"/pharmacies"}
-                  element={<PharmaciesPage />}
-              />
-              <Route
                   path={"/translations"}
                   element={<TranslationPage />}
               />
               <Route
-                  path={"/transactions"}
-                  element={<TransactionPage />}
-              />
-              <Route
-                  path={"/constants"}
-                  element={<ConstantsPage />}
-              />
-              <Route
                   path={"auth/*"}
-                  element={<Navigate to={"/orders"} replace />}
+                  element={<Navigate to={"/numbers"} replace />}
               />
               <Route
                   path={"/"}
-                  element={<Navigate to={"/orders"} replace />}
+                  element={<Navigate to={"/numbers"} replace />}
               />
               <Route path={"*"} element={<NotFoundPage />} />
             </Route>

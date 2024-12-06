@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Container from "../../../components/Container.jsx";
-import {Button, Input, Pagination, Popconfirm, Row, Space, Switch, Table} from "antd";
+import {Button, Checkbox, Pagination, Popconfirm, Row, Space, Table} from "antd";
 import {get} from "lodash";
 import {useTranslation} from "react-i18next";
 import usePaginateQuery from "../../../hooks/api/usePaginateQuery.js";
@@ -12,14 +12,13 @@ import usePutQuery from "../../../hooks/api/usePutQuery.js";
 const UsersContainer = () => {
     const {t} = useTranslation();
     const [page, setPage] = useState(0);
-    const [searchKey,setSearchKey] = useState();
+
     const {data,isLoading} = usePaginateQuery({
         key: KEYS.users_list,
         url: URLS.users_list,
         params: {
             params: {
                 size: 10,
-                search: searchKey
             }
         },
         page
@@ -38,14 +37,9 @@ const UsersContainer = () => {
             key: "id",
         },
         {
-            title: t("First name"),
-            dataIndex: "firstName",
-            key: "firstName"
-        },
-        {
-            title: t("Last name"),
-            dataIndex: "lastName",
-            key: "lastName"
+            title: t("Chat id"),
+            dataIndex: "chatId",
+            key: "chatId",
         },
         {
             title: t("Phone number"),
@@ -53,22 +47,12 @@ const UsersContainer = () => {
             key: "phoneNumber",
         },
         {
-            title: t("Registered"),
-            dataIndex: "registered",
-            key: "registered",
-            render: (props,data) => {
-                return (
-                    <Switch disabled value={get(data,'registered')}/>
-                )
-            }
-        },
-        {
             title: t("Blocked"),
             dataIndex: "blocked",
-            key: "registered",
-            render: (props,data) => {
+            key: "blocked",
+            render: (props) => {
                 return (
-                    <Switch disabled value={get(data,'blocked')}/>
+                    <Checkbox checked={props}/>
                 )
             }
         },
@@ -106,14 +90,6 @@ const UsersContainer = () => {
     return (
         <Container>
             <Space direction={"vertical"} style={{width: "100%"}} size={"middle"}>
-                <Space size={"middle"}>
-                    <Input.Search
-                        placeholder={t("Search")}
-                        onChange={(e) => setSearchKey(e.target.value)}
-                        allowClear
-                    />
-                </Space>
-
                 <Table
                     columns={columns}
                     dataSource={get(data,'data.content',[])}

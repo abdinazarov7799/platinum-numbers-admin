@@ -28,7 +28,7 @@ const TranslationContainer = () => {
         page,
     });
 
-    const findLang = (translations = [], lang = "Ru") => {
+    const findLang = (translations = [], lang = "RU") => {
         return find(translations, (item) => isEqual(get(item, "language"), lang));
     };
     const showModal = () => {
@@ -58,7 +58,7 @@ const TranslationContainer = () => {
             key: "uz",
             width: 400,
             render: (props, data) => {
-                return <>{get(findLang(get(data, "languageSourcePs", []), "uz"), "translation")}</>
+                return <>{get(findLang(get(data, "languageSourcePs", []), "UZ"), "translation")}</>
             }
         },
         {
@@ -66,15 +66,7 @@ const TranslationContainer = () => {
             key: "ru",
             width: 400,
             render: (props, data) => {
-                return <>{get(findLang(get(data, "languageSourcePs", []), "ru"), "translation")}</>
-            }
-        },
-        {
-            title: t("Kr"),
-            key: "kr",
-            width: 400,
-            render: (props, data) => {
-                return <>{get(findLang(get(data, "languageSourcePs", []), "kr"), "translation")}</>
+                return <>{get(findLang(get(data, "languageSourcePs", []), "RU"), "translation")}</>
             }
         },
         {
@@ -103,7 +95,7 @@ const TranslationContainer = () => {
             </Row>
             <Table
                 columns={columns}
-                dataSource={get(data,'data.data.content',[])}
+                dataSource={get(data,'data.content',[])}
                 bordered
                 loading={isLoading}
                 size="small"
@@ -116,7 +108,7 @@ const TranslationContainer = () => {
                 <Pagination
                     current={page+1}
                     onChange={(page) => setPage(page - 1)}
-                    total={get(data,'data.data.totalPages') * 10}
+                    total={get(data,'data.totalPages') * 10}
                     showSizeChanger={false}
                 />
             </Row>

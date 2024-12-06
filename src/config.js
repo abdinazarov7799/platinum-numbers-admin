@@ -1,10 +1,15 @@
 const config = {
-  API_ROOT: 'https://jurabek-lab.medias.uz',
+  API_ROOT: 'http://38.242.148.205:8089',
   DEFAULT_APP_LANG: "UZ",
-  ROLES: {
-    ROLE_SUPER_ADMIN: "ROLE_SUPER_ADMIN",
-    ROLE_ADMIN: "ROLE_ADMIN",
-    ROLE_USER: "ROLE_USER",
+  STATUSES: {
+    ACTIVE: "ACTIVE",
+    BOOKED: "BOOKED",
+    SOLD: "SOLD",
+  },
+  TYPES: {
+    PREMIUM: "PREMIUM",
+    GOLD: "GOLD",
+    SILVER: "SILVER",
   }
 }
 export default config;
